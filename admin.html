@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Auctioned Players</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <h2>Add Auctioned Player Details</h2>
+    <form id="player-form">
+        <label for="player-image">Player Photo:</label><br>
+        <input type="file" id="player-image" accept="image/*"><br>
+        <label for="player-status">Sold or Unsold:</label><br>
+        <select id="player-status">
+            <option value="sold">Sold</option>
+            <option value="unsold">Unsold</option>
+        </select><br>
+        <label for="player-points">Points (if sold):</label><br>
+        <input type="number" id="player-points" min="0"><br>
+        <button type="button" onclick="addPlayer()">Add Player</button>
+    </form>
+
+    <script>
+        // Function to add auctioned player
+        function addPlayer() {
+            const imageInput = document.getElementById('player-image');
+            const statusSelect = document.getElementById('player-status');
+            const pointsInput = document.getElementById('player-points');
+            
+            // Code to add player details to database or perform any necessary actions
+            
+            // Reset form fields after adding player
+            imageInput.value = '';
+            pointsInput.value = '';
+        }
+    </script>
+</body>
+</html>
