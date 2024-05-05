@@ -8,14 +8,28 @@
 <body>
     <h1>Auctioned Players</h1>
     <div id="players-container">
-        <!-- This div will be populated with updated list of players -->
+        <!-- Player details will be dynamically updated here -->
     </div>
 
     <script>
-        // Function to fetch and display updated list of players
         function fetchPlayers() {
-            // Code to fetch player details from database or any other source
-            // and update the players-container div with the list of players
+            fetch('https://your-backend-api.com/players') // Replace with your backend API URL
+                .then(response => response.json())
+                .then(data => {
+                    // Update players-container with the latest player details
+                    const playersContainer = document.getElementById('players-container');
+                    playersContainer.innerHTML = ''; // Clear previous content
+                    data.forEach(player => {
+                        const playerDiv = document.createElement('div');
+                        playerDiv.innerHTML = `
+                            <h3>${player.name}</h3>
+                            <p>Sold: ${player.sold ? 'Yes' : 'No'}</p>
+                            <p>Points: ${player.points || 'N/A'}</p>
+                        `;
+                        playersContainer.appendChild(playerDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching players:', error));
         }
 
         // Fetch and display players when the page loads
